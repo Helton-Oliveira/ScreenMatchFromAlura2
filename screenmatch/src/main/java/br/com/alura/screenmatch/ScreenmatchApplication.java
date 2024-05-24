@@ -1,8 +1,6 @@
 package br.com.alura.screenmatch;
 
-import br.com.alura.screenmatch.model.DadosSerie;
-import br.com.alura.screenmatch.service.ConsumoAPI;
-import br.com.alura.screenmatch.service.ConverteDados;
+import br.com.alura.screenmatch.principal.Principal;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,12 +13,10 @@ public class ScreenmatchApplication implements CommandLineRunner {
 	}
 
 	@Override
-	public void run(String... args) throws Exception {
-		var consumoApi = new ConsumoAPI();
-		var  json = consumoApi.obterDados("http://www.omdbapi.com/?t=gilmore+girls&apikey=dc4c4eb4");
-		var conversor = new ConverteDados();
-		var dados = conversor.obterDados(json, DadosSerie.class);
-		System.out.println(dados);
+	public void run(String... args) throws Exception { // o conceito principal deste programa é reutilizar código através de classes genericas com seus metodos
+		Principal principal = new Principal();
+		principal.exibeMenu();
+
 
 	}
 }
